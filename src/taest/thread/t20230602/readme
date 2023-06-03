@@ -1,0 +1,21 @@
+volatile
+保证线程可见性
+-MESI
+-缓存一致性协议
+
+
+禁止指令重排序(cpu)
+-DCL单例
+-Double Check Lock
+loadfence原语指令
+storefence原语指令
+
+instance = new Singleton();
+1. 申请内存赋默认值
+2. 初始化修改对象值
+3. 完成对象引用生成
+2，3步骤可能会产生指令重排
+
+
+CAS
+ABA问题 如果基础类型无所谓，引用类型  你的女朋友跟你复合，中间经历了别的女人

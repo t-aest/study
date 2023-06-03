@@ -1,0 +1,19 @@
+synchronized早期实现为重量级锁 -OS
+后来改进
+锁升级概念
+  我就是厕所所长
+
+sync(object) 无锁
+markword 记录线程ID (偏向锁)
+如果线程争用  升级为自旋锁
+自旋10次后
+升级为重量级锁 -OS
+
+
+
+
+锁代码部分 执行时间短，并发线程少 用自旋锁
+          执行时间长，并发线程多  用重量级锁 系统锁
+
+
+synchronized(Object)不能锁String常量  Integer Long 基础类型
