@@ -1,6 +1,8 @@
 import java.util.*;
 
 public class Main {
+
+
     public static void main(String[] args) {
 //        StringBuffer stringBuffer = new StringBuffer();
 //        StringBuilder sb = new StringBuilder();
@@ -24,6 +26,15 @@ public class Main {
 //        }
 //        int[] num1 = new int[]{4,3,2,7,8,2,3,1};
 //        findDisappearedNumbers(num1);
+        ListNode a = new ListNode(0);
+        ListNode b = new ListNode(1);
+        ListNode c = new ListNode(2);
+        a.next = b;
+        a = a.next;
+        a.next = c;
+        System.out.println("a = " + a.val);
+        System.out.println("a = " + a.next.val);
+        System.out.println("a = " + a.next.next);
     }
 
     static Map<Integer, Integer> cache = new HashMap();
@@ -146,4 +157,48 @@ public class Main {
         return result;
     }
 
+    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        if (null == list1) return list2;
+        if (null == list2) return list1;
+        ListNode result = new ListNode(0);
+        ListNode p = result;
+        while (list1!=null && list2!=null){
+            if (list1.val < list2.val){
+                p.next = list1;
+                list1 = list1.next;
+            }else {
+                p.next = list2;
+                list2 = list2.next;
+            }
+            p = p.next;
+        }
+        if (list1!=null){
+            p.next=  list1;
+        }
+        if (list2!=null){
+            p.next=  list2;
+        }
+        return result.next;
+    }
+
+    public static ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
+        if (null == list1) return list2;
+        if (null == list2) return list1;
+        if (list1.val < list2.val){
+            list1.next = mergeTwoLists2(list1.next,list2);
+            return list1;
+        } else {
+            list2.next = mergeTwoLists2(list2.next,list1);
+            return list2;
+        }
+    }
+
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }
