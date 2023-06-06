@@ -193,6 +193,35 @@ public class Main {
         }
     }
 
+    public static ListNode deleteDuplicates(ListNode head) {
+        if (head == null){
+            return null;
+        }
+        ListNode current = head;
+        while (null != current.next){
+            if (current.next.val == current.val){
+                current.next = current.next.next;
+            }else {
+                current = current.next;
+            }
+        }
+        return head;
+    }
+
+    public static ListNode deleteDuplicatesDiGui(ListNode head) {
+        if (null == head || null == head.next){
+            return head;
+        }
+        head.next = deleteDuplicatesDiGui(head.next);
+        if (head.val == head.next.val){
+            head = head.next;
+            return head;
+        }else {
+            return head;
+        }
+
+    }
+
 }
 
 class ListNode {
