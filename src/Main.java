@@ -293,6 +293,24 @@ public class Main {
         return pa;
     }
 
+
+    /**
+     * 翻转链表 单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+     * @param head
+     * @return
+     */
+    public ListNode reverseList(ListNode head) {
+        ListNode curr = head;
+        ListNode pre = null;
+        while (curr!=null){
+            ListNode next = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = next;
+        }
+        return pre;
+    }
+
 }
 
 class ListNode {
