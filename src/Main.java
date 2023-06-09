@@ -311,6 +311,47 @@ public class Main {
         return pre;
     }
 
+    /**
+     * 回文链表  给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false
+     * @param head
+     * @return
+     */
+    public boolean isPalindrome(ListNode head) {
+        if (head==null || head.next == null){
+            return false;
+        }
+        ListNode slow = head,fast = head;
+        while (fast!=null&&fast.next!=null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        if (fast!=null){
+            slow = slow.next;
+        }
+        slow = reverse(slow);
+        fast = head;
+        while (slow!=null){
+            if (slow.val != fast.val){
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return true;
+    }
+
+    public ListNode reverse(ListNode head) {
+        ListNode cur = head;
+        ListNode pre = null;
+        while (cur!=null){
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
 }
 
 class ListNode {
