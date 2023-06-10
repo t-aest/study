@@ -101,7 +101,7 @@ public class Main {
                 nums1[i] = nums2[num2Index--];
             } else if (num2Index < 0) {
                 break;
-            }else if (nums1[num1Index] > nums2[num2Index]) {
+            } else if (nums1[num1Index] > nums2[num2Index]) {
                 nums1[i] = nums1[num1Index--];
             } else {
                 nums1[i] = nums2[num2Index--];
@@ -110,12 +110,12 @@ public class Main {
     }
 
     public static void moveZeroes(int[] nums) {
-        if (nums == null){
+        if (nums == null) {
             return;
         }
         int j = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (0!=nums[i]){
+            if (0 != nums[i]) {
                 nums[j] = nums[i];
                 j++;
             }
@@ -129,14 +129,14 @@ public class Main {
     public static List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            int index = Math.abs(nums[i])-1;
-            if (index >= 0 && nums[index]>=0) {
+            int index = Math.abs(nums[i]) - 1;
+            if (index >= 0 && nums[index] >= 0) {
                 nums[index] = -nums[index];
             }
         }
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i]>0){
-                result.add(i+1);
+            if (nums[i] > 0) {
+                result.add(i + 1);
             }
         }
         return result;
@@ -150,8 +150,8 @@ public class Main {
             nums[index] += n;
         }
         for (int i = 0; i < n; i++) {
-            if (nums[i]<=n){
-                result.add(i+1);
+            if (nums[i] <= n) {
+                result.add(i + 1);
             }
         }
         return result;
@@ -162,21 +162,21 @@ public class Main {
         if (null == list2) return list1;
         ListNode result = new ListNode(0);
         ListNode p = result;
-        while (list1!=null && list2!=null){
-            if (list1.val < list2.val){
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
                 p.next = list1;
                 list1 = list1.next;
-            }else {
+            } else {
                 p.next = list2;
                 list2 = list2.next;
             }
             p = p.next;
         }
-        if (list1!=null){
-            p.next=  list1;
+        if (list1 != null) {
+            p.next = list1;
         }
-        if (list2!=null){
-            p.next=  list2;
+        if (list2 != null) {
+            p.next = list2;
         }
         return result.next;
     }
@@ -184,24 +184,24 @@ public class Main {
     public static ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
         if (null == list1) return list2;
         if (null == list2) return list1;
-        if (list1.val < list2.val){
-            list1.next = mergeTwoLists2(list1.next,list2);
+        if (list1.val < list2.val) {
+            list1.next = mergeTwoLists2(list1.next, list2);
             return list1;
         } else {
-            list2.next = mergeTwoLists2(list2.next,list1);
+            list2.next = mergeTwoLists2(list2.next, list1);
             return list2;
         }
     }
 
     public static ListNode deleteDuplicates(ListNode head) {
-        if (head == null){
+        if (head == null) {
             return null;
         }
         ListNode current = head;
-        while (null != current.next){
-            if (current.next.val == current.val){
+        while (null != current.next) {
+            if (current.next.val == current.val) {
                 current.next = current.next.next;
-            }else {
+            } else {
                 current = current.next;
             }
         }
@@ -209,14 +209,14 @@ public class Main {
     }
 
     public static ListNode deleteDuplicatesDiGui(ListNode head) {
-        if (null == head || null == head.next){
+        if (null == head || null == head.next) {
             return head;
         }
         head.next = deleteDuplicatesDiGui(head.next);
-        if (head.val == head.next.val){
+        if (head.val == head.next.val) {
             head = head.next;
             return head;
-        }else {
+        } else {
             return head;
         }
 
@@ -224,19 +224,20 @@ public class Main {
 
     /**
      * 环形链表  给你一个链表的头节点 head ，判断链表中是否有环。
+     *
      * @param head
      * @return
      */
     public boolean hasCycle(ListNode head) {
-        if (head==null){
+        if (head == null) {
             return false;
         }
         ListNode slow = head;
         ListNode fast = head;
-        while (null != fast.next && null!=fast.next.next){
+        while (null != fast.next && null != fast.next.next) {
             slow = slow.next;
             fast = fast.next.next;
-            if (slow == fast){
+            if (slow == fast) {
                 return true;
             }
         }
@@ -245,6 +246,7 @@ public class Main {
 
     /**
      * 环形链表 II 给定一个链表的头节点  head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+     *
      * @param head
      * @return
      */
@@ -279,14 +281,15 @@ public class Main {
 
     /**
      * 相交链表 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。
+     *
      * @param headA
      * @param headB
      * @return
      */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (null == headA || null == headB)  return null;
-        ListNode pa = headA,pb = headB;
-        while (pa!=pb){
+        if (null == headA || null == headB) return null;
+        ListNode pa = headA, pb = headB;
+        while (pa != pb) {
             pa = pa.next == null ? headB : pa.next;
             pb = pb.next == null ? headA : pb.next;
         }
@@ -296,13 +299,14 @@ public class Main {
 
     /**
      * 翻转链表 单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+     *
      * @param head
      * @return
      */
     public ListNode reverseList(ListNode head) {
         ListNode curr = head;
         ListNode pre = null;
-        while (curr!=null){
+        while (curr != null) {
             ListNode next = curr.next;
             curr.next = pre;
             pre = curr;
@@ -313,25 +317,26 @@ public class Main {
 
     /**
      * 回文链表  给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false
+     *
      * @param head
      * @return
      */
     public boolean isPalindrome(ListNode head) {
-        if (head==null || head.next == null){
+        if (head == null || head.next == null) {
             return false;
         }
-        ListNode slow = head,fast = head;
-        while (fast!=null&&fast.next!=null){
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }
-        if (fast!=null){
+        if (fast != null) {
             slow = slow.next;
         }
         slow = reverse(slow);
         fast = head;
-        while (slow!=null){
-            if (slow.val != fast.val){
+        while (slow != null) {
+            if (slow.val != fast.val) {
                 return false;
             }
             slow = slow.next;
@@ -343,7 +348,7 @@ public class Main {
     public ListNode reverse(ListNode head) {
         ListNode cur = head;
         ListNode pre = null;
-        while (cur!=null){
+        while (cur != null) {
             ListNode next = cur.next;
             cur.next = pre;
             pre = cur;
@@ -352,12 +357,54 @@ public class Main {
         return pre;
     }
 
+    /**
+     * 链表的中间节点
+     * @param head
+     * @return
+     */
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+
+    }
+
+    /**
+     * 链表中倒数第k个节点
+     * @param head
+     * @param k
+     * @return
+     */
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        ListNode fast = head,slow = head;
+        for (int i = 0; i < k; i++) {
+            fast = fast.next;
+        }
+        while (fast!=null&& fast.next!=null){
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
 }
 
 class ListNode {
     int val;
     ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
 }
