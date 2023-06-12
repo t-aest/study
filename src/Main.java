@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-
+    public static int ptr;
 
     public static void main(String[] args) {
 //        StringBuffer stringBuffer = new StringBuffer();
@@ -388,6 +388,52 @@ public class Main {
             slow = slow.next;
         }
         return slow;
+    }
+
+    public String decodeString(String s) {
+        LinkedList<String> stk = new LinkedList<String>();
+        ptr = 0;
+        while (ptr < s.length()){
+            char cur = s.charAt(ptr);
+            if (Character.isDigit(cur)){
+                String digits = getDigits(s);
+                stk.addLast(digits);
+            }else if (Character.isLetter(cur) || cur == '['){
+                stk.addLast(String.valueOf(s.charAt(ptr++)));
+            } else {
+                ptr++;
+                LinkedList<String> sub = new LinkedList<String>();
+                while (!"[".equals(stk.peekLast())){
+                    sub.addLast(stk.removeLast());
+                }
+                Collections.reverse(sub);
+                stk.removeLast();
+                int count = Integer.parseInt(stk.removeLast());
+                StringBuilder ret = new StringBuilder();
+                String string = getString(sub);
+                while (count-- > 0){
+                    ret.append(string);
+                }
+                stk.addLast(ret.toString());
+            }
+        }
+        return getString(stk);
+    }
+
+    public String getDigits(String s) {
+        StringBuilder sb = new StringBuilder();
+        while (Character.isDigit(s.charAt(ptr))) {
+            sb.append(s.charAt(ptr++));
+        }
+        return sb.toString();
+    }
+
+    public String getString(LinkedList<String> v) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : v) {
+            sb.append(s);
+        }
+        return sb.toString();
     }
 
 }
