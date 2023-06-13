@@ -436,6 +436,60 @@ public class Main {
         return sb.toString();
     }
 
+    public List<Integer> inorderTraversalFast(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        while (root!=null || !stack.isEmpty()){
+            while (root!=null){
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            result.add(root.val);
+            root = root.right;
+        }
+        return result;
+    }
+
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode pre = null;
+        while (root!=null || !stack.isEmpty()){
+            while (root!=null){
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (root.right == null || root.right == pre){
+                result.add(root.val);
+                pre = root;
+                root = null;
+            }else {
+                stack.push(root);
+                root = root.right;
+            }
+            result.add(root.val);
+            root = root.right;
+        }
+        return result;
+    }
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        accessTree(root,result);
+        return result;
+    }
+
+    private void accessTree(TreeNode root, List<Integer> result) {
+        if (root == null){
+            return;
+        }
+        accessTree(root.left,result);
+        result.add(root.val);
+        accessTree(root.right,result);
+    }
+
 }
 
 class ListNode {
@@ -452,5 +506,18 @@ class ListNode {
     ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
+    }
+}
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }
