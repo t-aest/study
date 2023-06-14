@@ -1,3 +1,5 @@
+import taest.thread.dto.T;
+
 import java.util.*;
 
 public class Main {
@@ -488,6 +490,61 @@ public class Main {
         accessTree(root.left,result);
         result.add(root.val);
         accessTree(root.right,result);
+    }
+
+    /**
+     * 对称二叉树   给你一个二叉树的根节点 root ， 检查它是否轴对称。
+     * @param root
+     * @return
+     */
+    public boolean isSymmetric(TreeNode root) {
+        if (root == null){
+            return false;
+        }
+        return deepcheck(root.left,root.right);
+    }
+
+    public boolean isSymmetricQueue(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        if (root == null) {
+            return false;
+        }
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        if (left == null && right == null){
+            return true;
+        }
+        q.offer(left);
+        q.offer(right);
+        while (!q.isEmpty()){
+            left = q.poll();
+            right = q.poll();
+            if (left == null && right == null){
+                continue;
+            }
+            if ((left == null || right == null) || (left.val != right.val)){
+                return false;
+            }
+            q.offer(left.left);
+            q.offer(right.right);
+
+            q.offer(left.right);
+            q.offer(right.left);
+        }
+        return true;
+    }
+
+    public boolean deepcheck(TreeNode left, TreeNode right) {
+        if (left == null && right == null){
+            return true;
+        }
+        if (left == null || right == null){
+            return false;
+        }
+        if (left.val != right.val){
+            return false;
+        }
+        return deepcheck(left.left,right.right) && deepcheck(left.right,right.left);
     }
 
 }
