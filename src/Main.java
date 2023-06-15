@@ -547,6 +547,60 @@ public class Main {
         return deepcheck(left.left,right.right) && deepcheck(left.right,right.left);
     }
 
+    /**
+     * 二叉树最大深度
+     * @param root
+     * @return
+     */
+    public int maxDepth(TreeNode root) {
+        if (root == null){
+            return 0;
+        }
+        return Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
+
+    /**
+     * 平衡二叉树  一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1 。
+     * @param root
+     * @return
+     */
+    public boolean isBalanced(TreeNode root) {
+        if (root == null){
+            return true;
+        }
+        return decisionTree(root)!=-1;
+    }
+
+    private int decisionTree(TreeNode root) {
+        if (root == null){
+            return 0;
+        }
+        int left = decisionTree(root.left);
+        int right = decisionTree(root.right);
+        if (left == -1 || right == -1 || Math.abs(left - right) > 1){
+            return -1;
+        }
+        return Math.max(left,right) + 1;
+    }
+
+    /**
+     * 翻转二叉树
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null){
+            return null;
+        }
+        TreeNode temp = root.right;
+        root.right = root.left;
+        root.left = temp;
+        invertTree(root.left);
+        invertTree(root.right);
+        return root;
+    }
+
+
 }
 
 class ListNode {
