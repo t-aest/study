@@ -5,39 +5,6 @@ import java.util.*;
 public class Main {
     public static int ptr;
 
-    public static void main(String[] args) {
-//        StringBuffer stringBuffer = new StringBuffer();
-//        StringBuilder sb = new StringBuilder();
-//        String a =  new String("ss");
-//        //堆、方法区、 虚拟机栈、本地方法栈、程序计数器
-//        LinkedHashSet linkedHashSet = new LinkedHashSet();
-//        Map<String,String> map = new HashMap<>();
-
-//        System.out.println("climbStairs(10) = " + climbStairs(10));
-//        Map<Integer,Integer> cache = new HashMap();
-//        System.out.println("cache = " + cache.get(0));
-//        System.out.println("args = " + args);
-
-//        int[] num1 = new int[]{4, 5, 6, 0, 0, 0};
-//        int[] num2 = new int[]{1, 2, 3};
-//        merge(num1, 3, num2, 3);
-//        int[] num1 = new int[]{0, 5, 6, 0, 7, 0};
-//        moveZeroes(num1);
-//        for (int i : num1) {
-//            System.out.println("i = " + i);
-//        }
-//        int[] num1 = new int[]{4,3,2,7,8,2,3,1};
-//        findDisappearedNumbers(num1);
-        ListNode a = new ListNode(0);
-        ListNode b = new ListNode(1);
-        ListNode c = new ListNode(2);
-        a.next = b;
-        a = a.next;
-        a.next = c;
-        System.out.println("a = " + a.val);
-        System.out.println("a = " + a.next.val);
-        System.out.println("a = " + a.next.next);
-    }
 
     static Map<Integer, Integer> cache = new HashMap();
 
@@ -598,6 +565,62 @@ public class Main {
         invertTree(root.left);
         invertTree(root.right);
         return root;
+    }
+
+    /**
+     * 冒泡排序
+     * @param nums
+     */
+    public static void bubbleSort(int[] nums){
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums.length-1-i; j++) {
+                if (nums[j+1] < nums[j]){
+                    int tmp = nums[j];
+                    nums[j] = nums[j+1];
+                    nums[j+1] = tmp;
+                }
+            }
+        }
+    }
+
+
+    public static void main(String[] args) {
+//        StringBuffer stringBuffer = new StringBuffer();
+//        StringBuilder sb = new StringBuilder();
+//        String a =  new String("ss");
+//        //堆、方法区、 虚拟机栈、本地方法栈、程序计数器
+//        LinkedHashSet linkedHashSet = new LinkedHashSet();
+//        Map<String,String> map = new HashMap<>();
+
+//        System.out.println("climbStairs(10) = " + climbStairs(10));
+//        Map<Integer,Integer> cache = new HashMap();
+//        System.out.println("cache = " + cache.get(0));
+//        System.out.println("args = " + args);
+
+//        int[] num1 = new int[]{4, 5, 6, 0, 0, 0};
+//        int[] num2 = new int[]{1, 2, 3};
+//        merge(num1, 3, num2, 3);
+//        int[] num1 = new int[]{0, 5, 6, 0, 7, 0};
+//        moveZeroes(num1);
+//        for (int i : num1) {
+//            System.out.println("i = " + i);
+//        }
+//        int[] num1 = new int[]{4,3,2,7,8,2,3,1};
+//        findDisappearedNumbers(num1);
+//        ListNode a = new ListNode(0);
+//        ListNode b = new ListNode(1);
+//        ListNode c = new ListNode(2);
+//        a.next = b;
+//        a = a.next;
+//        a.next = c;
+//        System.out.println("a = " + a.val);
+//        System.out.println("a = " + a.next.val);
+//        System.out.println("a = " + a.next.next);
+        int[] num2 = new int[]{4,6,5,1, 2, 3};
+        bubbleSort(num2);
+        for (int i : num2) {
+            System.out.println("i = " + i);
+        }
     }
 
 
