@@ -583,8 +583,36 @@ public class Main {
         }
     }
 
+    /**
+     * 冒泡排序
+     * @param nums
+     */
+    public static void choiceSort(int[] nums){
+        if (nums.length == 0){
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int minIndex = i;
+            for (int j = i; j < nums.length; j++) {
+                if (nums[j] < nums[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            System.out.println("minIndex = " + nums[minIndex]);
+            int tmp = nums[i];
+            nums[i] = nums[minIndex];
+            nums[minIndex] = tmp;
+        }
+    }
+
 
     public static void main(String[] args) {
+        int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
+//        bubbleSort(num2);
+        choiceSort(num2);
+        for (int i : num2) {
+            System.out.println("i = " + i);
+        }
 //        StringBuffer stringBuffer = new StringBuffer();
 //        StringBuilder sb = new StringBuilder();
 //        String a =  new String("ss");
@@ -616,11 +644,7 @@ public class Main {
 //        System.out.println("a = " + a.val);
 //        System.out.println("a = " + a.next.val);
 //        System.out.println("a = " + a.next.next);
-        int[] num2 = new int[]{4,6,5,1, 2, 3};
-        bubbleSort(num2);
-        for (int i : num2) {
-            System.out.println("i = " + i);
-        }
+
     }
 
 
