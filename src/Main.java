@@ -568,7 +568,7 @@ public class Main {
     }
 
     /**
-     * 冒泡排序
+     * 冒泡排序  二二比较 i和i+1比较   每一轮找到一个最大值到末尾
      * @param nums
      */
     public static void bubbleSort(int[] nums){
@@ -584,7 +584,7 @@ public class Main {
     }
 
     /**
-     * 选择排序
+     * 选择排序 首先找到数组中最大（小）的元素  然后和第一个元素比较交换位置，然后继续找最小的和第二个元素比较交换  以此类推
      * @param nums
      */
     public static void choiceSort(int[] nums){
@@ -607,7 +607,7 @@ public class Main {
 
 
     /**
-     * 插入排序
+     * 插入排序  默认前面部分排好序，后面往前面排好序的里面插入，插入时，排好序的需要向后移动一位
      * @param nums
      */
     public static void insertionSort(int[] nums){
