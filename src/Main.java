@@ -584,7 +584,7 @@ public class Main {
     }
 
     /**
-     * 冒泡排序
+     * 选择排序
      * @param nums
      */
     public static void choiceSort(int[] nums){
@@ -606,10 +606,32 @@ public class Main {
     }
 
 
+    /**
+     * 插入排序
+     * @param nums
+     */
+    public static void insertionSort(int[] nums){
+        if (nums.length == 0){
+            return;
+        }
+        int current;
+        for (int i = 0; i < nums.length-1; i++) {
+            int preIndex = i;
+            current = nums[preIndex + 1];
+            while (preIndex >=0 && nums[preIndex] > current){
+                nums[preIndex +1] = nums[preIndex];
+                preIndex--;
+            }
+            nums[preIndex+1] = current;
+        }
+
+    }
+
+
     public static void main(String[] args) {
         int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
 //        bubbleSort(num2);
-        choiceSort(num2);
+        insertionSort(num2);
         for (int i : num2) {
             System.out.println("i = " + i);
         }
