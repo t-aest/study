@@ -627,11 +627,37 @@ public class Main {
 
     }
 
+    /**
+     * 希尔排序  按增量分组排序  例子 14个元素  分为7，3，1   组内使用插入排序
+     * @param nums
+     */
+    public static void shellSort(int[] nums){
+        int length = nums.length;
+        if (nums.length == 0) {
+            return;
+        }
+        int current, gap = length / 2;
+        while (gap > 0) {
+            for (int i = gap; i < length; i++) {
+                //待排序值
+                current = nums[i];
+                //已排序下标
+                int preIndex = i - gap;
+                while (preIndex >= 0 && nums[preIndex] > current) {
+                    nums[preIndex + gap] = nums[preIndex];
+                    preIndex = preIndex - gap;
+                }
+                nums[preIndex + gap] = current;
+            }
+
+            gap = gap / 2;
+        }
+    }
 
     public static void main(String[] args) {
         int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
 //        bubbleSort(num2);
-        insertionSort(num2);
+        shellSort(num2);
         for (int i : num2) {
             System.out.println("i = " + i);
         }
