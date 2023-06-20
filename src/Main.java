@@ -654,11 +654,42 @@ public class Main {
         }
     }
 
+    /**
+     * 归并排序  切分数组  然后递归排序   merge合并
+     * @param nums
+     */
+    public static int[] mergeSort(int[] nums){
+        if(nums.length < 2){
+            return nums;
+        }
+        int mid = nums.length/2;
+        int[] left = Arrays.copyOfRange(nums, 0, mid);
+        int[] right = Arrays.copyOfRange(nums, mid, nums.length);
+        return merge(mergeSort(left),mergeSort(right));
+
+    }
+
+    private static int[] merge(int[] left, int[] right) {
+        int[] result = new int[left.length + right.length];
+        for (int index = 0, i = 0, j = 0; index < result.length; index++) {
+            if (i>=left.length){
+                result[index] = right[j++];
+            } else if (j>= right.length){
+                result[index] = left[i++];
+            } else if (left[i] > right[j]){
+                result[index] = right[j++];
+            } else {
+                result[index] = left[i++];
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
 //        bubbleSort(num2);
-        shellSort(num2);
-        for (int i : num2) {
+        int[] ints = mergeSort(num2);
+        for (int i : ints) {
             System.out.println("i = " + i);
         }
 //        StringBuffer stringBuffer = new StringBuffer();
