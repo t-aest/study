@@ -2,6 +2,11 @@ package taest.leetcode;
 
 import java.util.Arrays;
 
+/**
+ * 计数排序
+ * 如果一个数组里所有元素都是整数，而且都在0-k之间，那对于数组中的每个元素来说，
+ * 如果能知道数组有多少项效益或等于该元素，就能准确给出该元素在排序后的数组的位置
+ */
 public class CountingSort {
 
     public static int[] sortArray(int[] nums){

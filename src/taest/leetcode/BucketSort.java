@@ -3,6 +3,10 @@ package taest.leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 桶排序
+ * 假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶分别排序。
+ */
 public class BucketSort {
 
     /**
