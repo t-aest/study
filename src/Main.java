@@ -685,6 +685,20 @@ public class Main {
         return result;
     }
 
+    /**
+     * 只出现一次的数字
+     * 数组中的全部元素的异或运算结果即为数组中只出现一次的数字。
+     * @param nums
+     * @return
+     */
+    public static int singleNumber(int[] nums) {
+        int single = 0;
+        for (int num : nums) {
+            single ^= num;
+        }
+        return single;
+    }
+
     public static void main(String[] args) {
         int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
 //        bubbleSort(num2);
