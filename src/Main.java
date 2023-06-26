@@ -699,6 +699,39 @@ public class Main {
         return single;
     }
 
+
+    /**
+     * 比特位计数
+     * @param num    21的二进制1的个数等于    (21&(21-1)) +1  依次类推
+     *
+     * @return
+     */
+    public static int[] countBits(int num) {
+        int[] bits = new int[num+1];
+        //bits[0]默认为0
+        for (int i = 1; i <= num; i++) {
+            bits[i] = bits[i&(i-1)] + 1;
+        }
+        return bits;
+
+    }
+
+    /**
+     * 比特位计数
+     * @param num    利用奇偶性   16.8.4中1的个数相同
+     *
+     * @return
+     */
+    public static int[] countBits1(int num) {
+        int[] bits = new int[num+1];
+        //bits[0]默认为0
+        for (int i = 1; i <= num; i++) {
+            bits[i] = (i&1) ==1 ? bits[i-1] +1 : bits[i >> 1];
+        }
+        return bits;
+
+    }
+
     public static void main(String[] args) {
         int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
 //        bubbleSort(num2);
