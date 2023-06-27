@@ -732,6 +732,20 @@ public class Main {
 
     }
 
+    /**
+     * 汉明距离   就是求两个数按位异或后的二进制中含有几个1
+     * @param x
+     * @param y
+     * @return
+     */
+    public static int hammingDistance(int x, int y) {
+        int result = 0;
+        for (int i = x^y; i !=0; i&=i-1) {
+            result++;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
 //        bubbleSort(num2);
