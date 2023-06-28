@@ -746,6 +746,29 @@ public class Main {
         return result;
     }
 
+    /**
+     * 有效的括号
+     * @param s
+     * @return
+     */
+    public boolean isValid(String s) {
+
+        Deque<Character> stack = new LinkedList<>();
+        for (char c : s.toCharArray()) {
+            if ('(' == c)
+                stack.push(')');
+            else if ('[' == c)
+                stack.push(']');
+            else if ('{' == c)
+                stack.push('}');
+            else if (stack.isEmpty() || stack.pop() != c)
+                return false;
+
+        }
+        return stack.isEmpty();
+
+    }
+
     public static void main(String[] args) {
         int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
 //        bubbleSort(num2);
