@@ -769,13 +769,36 @@ public class Main {
 
     }
 
-    public static void main(String[] args) {
-        int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
-//        bubbleSort(num2);
-        int[] ints = mergeSort(num2);
-        for (int i : ints) {
-            System.out.println("i = " + i);
+    /**
+     * 字符串相加
+     * @param num1
+     * @param num2
+     * @return
+     */
+    public static String addStrings(String num1, String num2) {
+        StringBuilder sb = new StringBuilder();
+        int carry = 0;
+        for (int i = num1.length()-1,j = num2.length()-1; i >=0||j>=0||carry == 1 ; i--,j--) {
+            int x = i < 0 ? 0:num1.charAt(i) - '0';
+            int y = j < 0 ? 0:num2.charAt(j) - '0';
+            sb.append((x+y + carry)%10);
+            carry = (x+y + carry)/10;
         }
+        return sb.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+
+        String nums1 = "11";
+        String nums2 = "123";
+        System.out.println(addStrings(nums1, nums2));
+
+//        int[] num2 = new int[]{4,6,5,1, 2, 3,8,9,7};
+////        bubbleSort(num2);
+//        int[] ints = mergeSort(num2);
+//        for (int i : ints) {
+//            System.out.println("i = " + i);
+//        }
 //        StringBuffer stringBuffer = new StringBuffer();
 //        StringBuilder sb = new StringBuilder();
 //        String a =  new String("ss");
